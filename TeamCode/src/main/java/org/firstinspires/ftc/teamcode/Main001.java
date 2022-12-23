@@ -77,6 +77,11 @@ public class Main001 extends LinearOpMode {
         right_front = hardwareMap.get(DcMotorEx.class, "right_front");
         left_back = hardwareMap.get(DcMotorEx.class, "left_back");
         right_back = hardwareMap.get(DcMotorEx.class, "right_back");
+
+        right_back.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        right_front.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        left_back.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        left_front.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void initManualModes() {
@@ -93,7 +98,7 @@ public class Main001 extends LinearOpMode {
         right_back.setVelocity(0);
     }
 
-    public boolean NoNullHardware() {
+    public boolean noNullHardware() {
         return (left_back != null && left_front != null && right_back != null && right_front != null);
     }
 }

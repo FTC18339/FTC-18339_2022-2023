@@ -52,10 +52,10 @@ import java.lang.Math;
 
 @TeleOp
 public class ManualProtocol001 extends Main001 {
-    public double left_front_power = 0;
-    public double right_front_power = 0;
-    public double left_back_power = 0;
-    public double right_back_power = 0;
+    private double left_front_power = 0;
+    private double right_front_power = 0;
+    private double left_back_power = 0;
+    private double right_back_power = 0;
 
     @Override
     public void runOpMode() {
@@ -77,7 +77,7 @@ public class ManualProtocol001 extends Main001 {
     }
 
     public void setMotorForces() {
-        if(!NoNullHardware()) return;
+        if(!noNullHardware()) return;
 
         double x = gamepad1.left_stick_x;
         double y = gamepad1.left_stick_y;
@@ -85,7 +85,7 @@ public class ManualProtocol001 extends Main001 {
         double rAxis = gamepad1.right_trigger - gamepad1.left_trigger;
 
         int quad = math.getQuad(x, y);
-        double theta = math.Theta(x, y, quad);
+        double theta = math.theta(x, y, quad);
         double z = (double) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * math.controlMultiplier;
 
         left_front_power = -math.getWheelForceManual(x, y, 1, rAxis, theta, z);

@@ -12,7 +12,7 @@ public class Algorithms001 {
     public static final float rotationPerRevolution = 2.314f;
 
     // dictates how fast the bot goes (0.05f is really slow, 0.1f is regular, more is faster)
-    float controlMultiplier = 0.1f;
+    float controlMultiplier = 0.07f;
 
     public void Initialize() {
 
@@ -111,7 +111,7 @@ public class Algorithms001 {
         }
 
         // this returns the power
-        return power;
+        return power * controlMultiplier;
     }
 
     // forgor
@@ -126,7 +126,7 @@ public class Algorithms001 {
     }
 
     double angleAdder = 0;
-    public double Theta(double x, double y, int q)
+    public double theta(double x, double y, int q)
     {
         angleAdder = 0;
         double iAngle = (Math.PI * q / 2 + angleAdder);
