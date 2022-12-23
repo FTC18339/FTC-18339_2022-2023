@@ -1,3 +1,5 @@
+This is FTC Team 18339's repository for the 2022-2023 FTC Season PowerPlay.
+
 ## TeamCode Module
 
 Welcome!
