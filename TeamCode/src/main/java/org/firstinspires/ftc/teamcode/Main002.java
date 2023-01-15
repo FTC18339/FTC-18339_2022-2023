@@ -66,7 +66,7 @@ public class Main002 extends LinearOpMode {
 
     public final float MOVEMENT_RPM = 25;
     public final float ACTUATOR_RPM = 180;
-    public final float ARM_RPM = 10;
+    public final float ARM_RPM = 1;
 
 
     public Algorithms002 math;

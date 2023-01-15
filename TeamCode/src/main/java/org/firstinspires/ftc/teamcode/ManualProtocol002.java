@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
@@ -85,6 +86,8 @@ public class ManualProtocol002 extends Main002 {
         double yOne = gamepad2.left_stick_y;
         double yTwo = gamepad2.right_stick_y;
 
+        boolean b = gamepad2.b;
+
         double rAxis = gamepad1.right_trigger - gamepad1.left_trigger;
 
         int quad = math.getQuad(x, y);
@@ -96,12 +99,8 @@ public class ManualProtocol002 extends Main002 {
         left_back_power = -math.getWheelForceManual(x, y, 3, rAxis, theta, z);
         right_back_power = math.getWheelForceManual(x, y, 4, rAxis, theta, z);
 
-        linear_actuator_power = math.getLinearActuatorForce(yOne);
+        linear_actuator_power = -math.getLinearActuatorForce(yOne);
         gripper_arm_power = math.getGripperArmForce(yTwo);
-
-        // these two are  here to make the motors move by the magnitude of the stick (test the above first, then possible move to this)
-        // linear_actuator_power = yOne;
-        // gripper_arm_power = yTwo;
 
         telemetry.addData("lpb", left_back_power + " q: " + quad + " theta: " + theta + "x: " + x + "y: " + y + "x2: " + gamepad1.right_stick_x);
         telemetry.addData("lpf", left_front_power);
@@ -128,6 +127,14 @@ public class ManualProtocol002 extends Main002 {
             } else if (gripOn) {
                 gripper.setPosition(0);
             }
+        }
+
+        boolean bumperRight = gamepad2.right_bumper;
+        boolean bumperLeft = gamepad2.left_bumper;
+        if (bumperRight) {
+            gripper_wrist.setDirection(Servo.Direction.FORWARD);
+        } else if (bumperLeft) {
+            gripper_wrist.setDirection(Servo.Direction.REVERSE);
         }
     }
 }

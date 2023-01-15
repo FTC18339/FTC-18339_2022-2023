@@ -12,7 +12,7 @@ public class Algorithms002 {
     public static final float rotationPerRevolution = 2.314f;
 
     // dictates how fast the bot goes (0.05f is really slow, 0.1f is regular, more is faster)
-    float controlMultiplier = 0.1f;
+    float controlMultiplier = 0.07f;
 
     public void Initialize() {
 
@@ -23,7 +23,7 @@ public class Algorithms002 {
         if (y > 0) {
             return y;
         } else if (y < 0) {
-            return -y;
+            return y;
         } else {
             return 0;
         }
@@ -33,22 +33,11 @@ public class Algorithms002 {
         if (y > 0) {
             return y;
         } else if (y < 0) {
-            return -y;
+            return y;
         } else {
             return 0;
         }
     }
-
-    /* public double getGripperWristForce(double a) {
-        double gripperWristPosition = 0.0;
-        if (a > 0) {
-
-        } else if (a < 0) {
-
-        } else {
-            return gripperWristPosition;
-        }
-    } */
 
     // i == 1 is left_front
     // i == 2 is right_front
@@ -140,7 +129,7 @@ public class Algorithms002 {
         } else if (movePower == 0 && rotationPower != 0){
             power = rotationPower;
         } else {
-            power = (double) ((movePower + rotationPower) / 2);
+            power = (movePower + rotationPower) / 2;
         }
 
         // this returns the power
